@@ -29,6 +29,7 @@ def load_registered_packages():
 
                 try:
                     module = importlib.import_module(module_name)
+                    module = importlib.reload(module)
                     class_ = getattr(module, class_name)
                     OPERATION_CLASSES[package_name] = class_
                 except (ImportError, AttributeError) as e:
