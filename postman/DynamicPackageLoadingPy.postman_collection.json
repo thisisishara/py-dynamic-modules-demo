@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "127ba353-8fe8-4ed5-acfc-329c5dad0b48",
+		"name": "DynamicPackageLoadingPy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14998326"
+	},
+	"item": [
+		{
+			"name": "RegisterModule",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"package_name\": \"divide\",\r\n    \"python_code\": \"class Divide:\\n    def __init__(self, a, b):\\n        self.a = a\\n        self.b = b\\n    def perform_division(self):\\n        if self.b == 0:\\n            return 'Cannot divide by zero'\\n        return self.a / self.b\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/register_operation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"register_operation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RunModule",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"operation\": \"divide\", \r\n    \"input\": [10, 3]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/runsomething",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"runsomething"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
